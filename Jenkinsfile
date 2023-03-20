@@ -21,18 +21,18 @@ pipeline {
 								],
 								[
 									$class: 'UserIdentity',
-									email: "amsalkhan@iul.ac.in",
-									name: "Amsal Khan"
+									email: "sk359079@gmail.com",
+									name: "Suraj Kamble"
 								],
 							],
-							userRemoteConfigs: [[url: 'github.com/surajkamble07/-devops_ci_cd.git']]						
+							userRemoteConfigs: [[url: 'https://github.com/surajkamble07/-devops_ci_cd.git']]						
 						]
 						)
 					} else if (env.BRANCH_NAME == 'dev'){	
 						checkout([
 							$class: 'GitSCM', 
 							branches: [[name: '*/dev']], 
-							userRemoteConfigs: [[url: 'github.com/surajkamble07/-devops_ci_cd.git']]
+							userRemoteConfigs: [[url: 'https://github.com/surajkamble07/-devops_ci_cd.git']]
 							])
 						}
 					}
@@ -43,16 +43,16 @@ pipeline {
 			script {
 				if (env.BRANCH_NAME == 'master'){
 				sh """
-				rm -rf /root/git_job_master
-				mkdir /root/git_job_master
-				cp -rvf . /root/git_job_master
-				if docker ps|grep master
+				sudo rm -rf /root/git_job_master
+				sudo mkdir /root/git_job_master
+				sudo cp -rvf . /root/git_job_master
+				if sudo docker ps|grep master
 				then
-				docker container stop master
-				docker rm -f master
-				docker run -dit -p 83:80 -v /root/git_job_master:/usr/local/apache2/htdocs --name master httpd
+				sudo docker container stop master
+				sudo docker rm -f master
+				sudo docker run -dit -p 83:80 -v /root/git_job_master:/usr/local/apache2/htdocs --name master httpd
 				else
-				docker run -dit -p 83:80 -v /root/git_job_master:/usr/local/apache2/htdocs --name master httpd
+				sudo docker run -dit -p 83:80 -v /root/git_job_master:/usr/local/apache2/htdocs --name master httpd
 				fi
                 """
 			} else if (env.BRANCH_NAME == 'dev'){
