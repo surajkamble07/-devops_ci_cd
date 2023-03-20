@@ -21,8 +21,8 @@ pipeline {
 								],
 								[
 									$class: 'UserIdentity',
-									email: "amsalkhan@iul.ac.in",
-									name: "Amsal Khan"
+									email: "sk359079@gmail.com",
+									name: "suraj kamble"
 								],
 							],
 							userRemoteConfigs: [[url: 'https://github.com/surajkamble07/-devops_ci_cd.git']]						
