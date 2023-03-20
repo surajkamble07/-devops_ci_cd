@@ -22,7 +22,7 @@ pipeline {
 								[
 									$class: 'UserIdentity',
 									email: "sk359079@gmail.com",
-									name: "suraj kamble"
+									name: "Suraj Kamble"
 								],
 							],
 							userRemoteConfigs: [[url: 'https://github.com/surajkamble07/-devops_ci_cd.git']]						
@@ -43,10 +43,9 @@ pipeline {
 			script {
 				if (env.BRANCH_NAME == 'master'){
 				sh """
-				 sudo rm -rf /root/git_job_master
-				 sudo mkdir /root/git_job_master
-				 sudo cp -rvf . /root/git_job_master
-
+				sudo rm -rf /root/git_job_master
+				sudo mkdir /root/git_job_master
+				sudo cp -rvf . /root/git_job_master
 				if sudo docker ps|grep master
 				then
 				sudo docker container stop master
