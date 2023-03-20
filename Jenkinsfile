@@ -15,7 +15,7 @@ pipeline {
 									options: [
 										mergeTarget: "dev",
 										fastForwardMode: "FF",
-										mergeRemote: "master",
+										mergeRemote: "origin",
 										mergeStrategy: "default"
 									],
 								],
